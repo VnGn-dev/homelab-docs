@@ -52,6 +52,7 @@ docker run --rm --gpus all ubuntu nvidia-smi
 ```bash
 cd services/jellyfin
 cp .env.example .env     # ajuste MEDIA_DIR e BIND_IP
+mkdir -p config cache   # cria as pastas antes, como seu usuário
 docker compose up -d
 ```
 
@@ -78,6 +79,9 @@ Para conferir: assista algo no celular com qualidade baixa forçada e rode
 
 ## Se der problema
 
+- **Container reiniciando ("Restarting (139)"):** as pastas `config` e `cache`
+  foram criadas pelo Docker como root. Corrija com
+  `sudo chown -R $USER:$USER config cache` e rode `docker compose restart`.
 - **"could not select device driver nvidia":** o container toolkit não está
   instalado ou o Docker não foi reiniciado (passo 2).
 - **Biblioteca vazia:** confira se `MEDIA_DIR` está certo e se seu usuário
