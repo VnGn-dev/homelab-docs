@@ -1,0 +1,23 @@
+# code-server — VS Code no navegador
+# Subir:   docker compose up -d
+# Logs:    docker compose logs -f
+# Parar:   docker compose down
+
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - PASSWORD=${PASSWORD}
+      - DEFAULT_WORKSPACE=/config/workspace
+    volumes:
+      - ./config:/config                       # configurações e extensões
+      - ${PROJECTS_DIR}:/config/workspace      # seus projetos (no SSD de projetos)
+    ports:
+      # Só escuta no IP do Tailscale: fica acessível de fora pela VPN,
+      # mas não pela rede local nem pela internet.
+      - "${BIND_IP}:8443:8443"

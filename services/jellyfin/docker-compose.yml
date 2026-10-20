@@ -1,0 +1,29 @@
+# Jellyfin — servidor de filmes e séries
+# Subir:   docker compose up -d
+# Acessar: http://<IP-Tailscale>:8096
+#
+# ATENÇÃO: a parte "deploy" usa a GTX 1650 e só funciona depois de instalar
+# o driver NVIDIA e o nvidia-container-toolkit (veja o README desta pasta).
+# Se quiser subir antes disso, comente o bloco "deploy" inteiro com #.
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    user: "${PUID}:${PGID}"
+    environment:
+      - TZ=${TZ}
+    volumes:
+      - ./config:/config            # configuração e banco de dados
+      - ./cache:/cache              # cache (pode apagar sem medo)
+      - ${MEDIA_DIR}:/media:ro      # filmes e séries no HD (só leitura)
+    ports:
+      - "${BIND_IP}:8096:8096"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

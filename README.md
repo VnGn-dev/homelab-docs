@@ -16,6 +16,9 @@ Servidor doméstico para estudos e portfólio.
 - code-server (VS Code no navegador)
 - Ollama (IA local, em andamento)
 
+## Serviços
+Veja [services/](services/README.md): cada serviço tem seu `docker-compose.yml` e um `.env.example`.
+
 ## Documentação
 - [ ] Wi-Fi com Netplan
 - [ ] Discos e fstab

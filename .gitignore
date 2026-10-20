@@ -4,3 +4,10 @@
 id_*
 !id_*.pub
 Vinigon*
+
+# Dados dos containers
+services/*/config/
+services/*/data/
+services/*/work/
+services/*/conf/
+services/*/cache/

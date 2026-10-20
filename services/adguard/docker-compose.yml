@@ -1,0 +1,22 @@
+# AdGuard Home — bloqueador de propaganda e rastreadores via DNS
+# Subir:   docker compose up -d
+# 1º acesso (assistente de instalação): http://<IP-Tailscale>:3000
+# Depois da instalação:                  http://<IP-Tailscale>:8080
+
+services:
+  adguard:
+    image: adguard/adguardhome:latest
+    container_name: adguard
+    restart: unless-stopped
+    volumes:
+      - ./work:/opt/adguardhome/work   # dados (estatísticas, logs)
+      - ./conf:/opt/adguardhome/conf   # configuração
+    ports:
+      # DNS: só no IP do Tailscale. Como não usa 0.0.0.0, não conflita
+      # com o systemd-resolved do Ubuntu (que fica em 127.0.0.53).
+      - "${BIND_IP}:53:53/tcp"
+      - "${BIND_IP}:53:53/udp"
+      # Assistente de instalação (só usado na primeira vez)
+      - "${BIND_IP}:3000:3000/tcp"
+      # Painel web (no assistente, escolha a porta 80 para o painel)
+      - "${BIND_IP}:8080:80/tcp"

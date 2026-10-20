@@ -1,0 +1,17 @@
+# Portainer — painel para gerenciar os containers
+# Subir:   docker compose up -d
+# Acessar: https://<IP-do-Tailscale>:9443  (crie o usuário admin nos primeiros minutos)
+
+services:
+  portainer:
+    image: portainer/portainer-ce:lts
+    container_name: portainer
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock   # permite gerenciar o Docker
+      - portainer_data:/data                        # dados do Portainer
+    ports:
+      - "${BIND_IP}:9443:9443"
+
+volumes:
+  portainer_data:
