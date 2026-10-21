@@ -15,7 +15,7 @@ services:
       - PASSWORD=${PASSWORD}
       - DEFAULT_WORKSPACE=/config/workspace
     volumes:
-      - ./config:/config                       # configurações e extensões
+      - ${CONFIG_DIR}:/config                  # configurações e extensões (no SSD)
       - ${PROJECTS_DIR}:/config/workspace      # seus projetos (no SSD de projetos)
     ports:
       # Só escuta no IP do Tailscale: fica acessível de fora pela VPN,
