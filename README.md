@@ -48,6 +48,7 @@ Cada serviço tem sua pasta em [services/](services/README.md), com
 |---|---|---|
 | [AdGuard Home](services/adguard/) | Bloqueia propaganda e rastreadores em todos os aparelhos | 8080 |
 | [Jellyfin](services/jellyfin/) | Filmes e séries, com transcodificação na GPU | 8096 |
+| [Ollama + Open WebUI](services/ollama/) | IA local na GPU, com interface no navegador | 3001 |
 | [Portainer](services/portainer/) | Painel para gerenciar os containers | 9443 |
 | [code-server](services/code-server/) | VS Code no navegador para programar de qualquer lugar | 8443 |
 
@@ -84,6 +85,6 @@ Formato de cada documento: **Problema → Causa → Solução → Comandos usado
 ## Próximos passos
 - [ ] Uptime Kuma: alertas no celular quando um serviço cair
 - [ ] Backup automático dos dados para `/srv/backup` (Restic)
-- [ ] Ollama + Open WebUI: IA local na GPU
+- [x] Ollama + Open WebUI: IA local na GPU
 - [ ] Sistema de gestão de equipamentos médicos (Python, FastAPI e PostgreSQL)
       rodando aqui, como projeto de desenvolvimento back-end

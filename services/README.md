@@ -9,6 +9,7 @@ Tailscale, sem abrir porta no modem.
 | portainer | Gerenciar containers | `https://<IP-Tailscale>:9443` |
 | adguard | Bloquear propaganda (DNS) | `http://<IP-Tailscale>:8080` |
 | jellyfin | Filmes e séries | `http://<IP-Tailscale>:8096` |
+| ollama | IA local (Open WebUI) | `http://<IP-Tailscale>:3001` |
 
 Cada pasta tem um README com o passo a passo específico do serviço.
 
