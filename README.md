@@ -81,6 +81,8 @@ Formato de cada documento: **Problema → Causa → Solução → Comandos usado
 - [x] [AdGuard Home](docs/05-adguard.md)
 - [x] [Jellyfin e GPU no Docker](docs/06-jellyfin.md)
 - [x] [GitHub com chave SSH](docs/07-github-ssh.md)
+- [x] [Aviso quando o servidor cai (Healthchecks.io)](docs/08-healthchecks.md)
+- [x] [Containers perdendo acesso à GPU](docs/09-gpu-perdida-docker.md)
 
 ## Próximos passos
 - [ ] Uptime Kuma: alertas no celular quando um serviço cair
